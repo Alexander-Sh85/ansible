@@ -1,0 +1,5 @@
+[group1]
+vpn ansible_host=158.160.158.43
+[group1:vars]
+ansible_user=ansible
+ansible_port=22
