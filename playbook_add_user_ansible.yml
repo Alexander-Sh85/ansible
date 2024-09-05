@@ -1,0 +1,33 @@
+- hosts: group2
+  become: true
+  tasks:
+    - name: Create user ansible
+      user:
+        name: ansible
+        home: /home/ansible
+        state: present
+        groups: sudo
+        shell: /bin/bash
+
+    - name: Create .ssh directory
+      file:
+        path: /home/ansible/.ssh
+        state: directory
+        mode: 0600
+        owner: ansible
+        group: ansible
+
+    - name: Create authorized_keys file
+      copy:
+        content: "{{ lookup('file', 'xxx.pub') }}"
+        dest: /home/ansible/.ssh/authorized_keys
+        mode: 0600
+        owner: ansible
+        group: ansible
+
+    - name: Add user to sudoers
+      lineinfile:
+        path: /etc/sudoers
+        line: "ansible ALL=(ALL) NOPASSWD: ALL"
+        create: yes
+        validate: "/usr/sbin/visudo -c -f %s"
