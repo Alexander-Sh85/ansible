@@ -1,0 +1,7 @@
+- hosts: VM
+  tasks:
+  - name: Вывести uname -a для всех машин
+    command: uname -a
+    register: uname_output
+
+  - debug: var=uname_output.stdout_lines
