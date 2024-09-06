@@ -1,6 +1,6 @@
 - name: TEST-CONFIG-VM
   gather_facts: No
-  hosts: vpn
+  hosts: VM
   tasks:
     - name: Install utils
       package:
@@ -11,9 +11,9 @@
         - mc
         - nano
 
-    - name: Add user ansible to docker group
-      user:
-        name: ansible
-        groups: docker
-        append: yes 
-      become: yes
+    # - name: Add user ansible to docker group
+    #   user:
+    #     name: ansible
+    #     groups: docker
+    #     append: yes 
+    #   become: yes

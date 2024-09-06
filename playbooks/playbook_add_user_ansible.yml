@@ -1,4 +1,4 @@
-- hosts: group2
+- hosts: VM
   become: true
   tasks:
     - name: Create user ansible
@@ -13,7 +13,7 @@
       file:
         path: /home/ansible/.ssh
         state: directory
-        mode: 0600
+        mode: 0700
         owner: ansible
         group: ansible
 

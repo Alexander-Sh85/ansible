@@ -1,0 +1,38 @@
+all:
+  vars:
+    ansible_user: ansible
+    ansible_port: 22
+  children:
+    VM:
+      children:
+        open-vpn:
+          hosts:
+            158.160.158.43:
+        itana-new:    
+          hosts:
+            158.160.148.127:
+        opensearch:    
+          hosts:
+            158.160.161.135:
+        neo4:    
+          hosts:
+            158.160.148.125:
+        gw:
+          hosts:
+            158.160.135.78:
+        ftp:
+          hosts:
+            158.160.142.251:
+        dev-server-new:
+          hosts:
+            158.160.134.147
+    DATABASES:
+      children:          
+        db_elasticsearch:
+          hosts:
+            158.160.148.187
+        db_couchbase:
+          hosts:
+            158.160.161.112:
+            158.160.162.207:
+            158.160.155.238:      
